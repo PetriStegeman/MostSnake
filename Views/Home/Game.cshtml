@@ -1,0 +1,73 @@
+﻿@using MostSnake.Models
+@model MostSnake.Models.Match
+@{
+    ViewBag.Title = "Game";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Game</h2>
+
+<table>
+    @for (int i = 20; i >= 1; i--)
+    {
+        <tr>
+            @for (int j = 1; j <= 20; j++)
+            {
+            <td>
+                @if (Model.Arena.Single(t => t.Coordinate.Y == i && t.Coordinate.X == j).TileState == TileState.Empty)
+                {
+                    <img src="~/Images/Empty.png" />
+                }
+                else if (Model.Arena.Single(t => t.Coordinate.Y == i && t.Coordinate.X == j).TileState == TileState.Wall)
+                {
+                    <img src="~/Images/Wall.png" />
+                }
+                else if (Model.Arena.Single(t => t.Coordinate.Y == i && t.Coordinate.X == j).TileState == TileState.SnakeHeadOne)
+                {
+                    <img src="~/Images/Snake1Head.png" />
+                }
+                else if (Model.Arena.Single(t => t.Coordinate.Y == i && t.Coordinate.X == j).TileState == TileState.SnakeBodyOne)
+                {
+                    <img src="~/Images/Snake1.png" />
+                }
+                else if (Model.Arena.Single(t => t.Coordinate.Y == i && t.Coordinate.X == j).TileState == TileState.SnakeHeadTwo)
+                {
+                    <img src="~/Images/Snake2Head.png" />
+                }
+                else if (Model.Arena.Single(t => t.Coordinate.Y == i && t.Coordinate.X == j).TileState == TileState.SnakeBodyTwo)
+                {
+                    <img src="~/Images/Snake2.png" />
+                }
+                else if (Model.Arena.Single(t => t.Coordinate.Y == i && t.Coordinate.X == j).TileState == TileState.SnakeHeadThree)
+                {
+                    <img src="~/Images/Snake3Head.png" />
+                }
+                else if (Model.Arena.Single(t => t.Coordinate.Y == i && t.Coordinate.X == j).TileState == TileState.SnakeBodyThree)
+                {
+                    <img src="~/Images/Snake3.png" />
+                }
+                else if (Model.Arena.Single(t => t.Coordinate.Y == i && t.Coordinate.X == j).TileState == TileState.SnakeHeadFour)
+                {
+                    <img src="~/Images/Snake4Head.png" />
+                }
+                else if (Model.Arena.Single(t => t.Coordinate.Y == i && t.Coordinate.X == j).TileState == TileState.SnakeBodyFour)
+                {
+                    <img src="~/Images/Snake4.png" />
+                }
+                else if (Model.Arena.Single(t => t.Coordinate.Y == i && t.Coordinate.X == j).TileState == TileState.SnakeCollision)
+                {
+                    <img src="~/Images/SnakeCollision.png"/>
+                }
+            </td>
+            }
+        </tr>
+    }
+</table>
+
+@ViewBag.Message
+
+<div class="row">
+    <div class="col-md-4">
+        <h2><a class="btn btn-default" href="/Home/RunMatch">Next Move &raquo;</a></h2>
+    </div>
+</div>
